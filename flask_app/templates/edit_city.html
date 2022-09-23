@@ -5,18 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link CSS here-->
-    <title>Add a City</title>
+    <title>Edit a City</title>
 </head>
 <body>
     <div class="container">
-        <p class="large big-col">Lively Cities and Landmarks</p>
+        <p class="large big-col">Edit city #???, ???</p>
         <p class="col"><a href="/">All cities</a> <a href="/">Exit</a></p> <!-- Correct links! -->
     </div>
-    <h1>???, let's add a city!</h1> <!-- Display name from session here! -->
-    <form action="/cities/add_to_db" method="POST"> <!-- Don't forget action and method="POST"!-->
+    <form action="" method="POST"> <!-- Change the action! -->
+        <!-- How do we prepopulate the forms? -->
         <div class="container">
             <label for="name" class="label-col">Name:</label>
-            <input type="text" name="name" id="name"> <!-- Don't forget name="key_value" in forms!-->
+            <input type="text" name="name" id="name">
         </div>
         <div class="container">
             <label for="mayor" class="label-col">Mayor:</label>
@@ -27,7 +27,7 @@
             <input type="number" name="population" id="population">
         </div>
         <!-- Remember to have a button or input type="submit"!-->
-        <input type="submit" value="Add city" class="offset-btn">
+        <input type="submit" value="Edit city" class="offset-btn">
     </form>
 </body>
 </html>
