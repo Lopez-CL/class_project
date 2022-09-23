@@ -1,7 +1,4 @@
-from distutils.log import debug
-from flask_app import app
-import flask_app
-from flask_app.controllers import cites
-
-if __name__ == "__main__":
-    app.run(debug=True)
+from flask import Flask
+app = Flask(__name__)
+# ADDED: secret key for session (and other things soon!)
+app.secret_key = "It's a secret to everybody!!!"
