@@ -1,4 +1,6 @@
-from flask import Flask
-app = Flask(__name__)
-# ADDED: secret key for session (and other things soon!)
-app.secret_key = "It's a secret to everybody!!!"
+from distutils.log import debug
+from flask_app import app
+from flask_app.controllers import users, cities
+
+if __name__ == "__main__":
+    app.run(debug=True)

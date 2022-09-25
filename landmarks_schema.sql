@@ -1,0 +1,1 @@
+SELECT * FROM landmarks_schema.cities;
