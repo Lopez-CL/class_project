@@ -32,7 +32,7 @@ class City:
         else:
             for this_city_dictionary in results:
                 print(this_city_dictionary)
-                this_city_obj = cls(this_city_dictionary)
+                this_city_obj = cls(this_city_dictionary) #not 100% clear on why we need cls
                 all_city_objects.append(this_city_obj)
             return all_city_objects
 
