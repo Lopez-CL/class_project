@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cities_styles.css') }}">
+    <title>Lively Landmarks</title>
+</head>
+<body>
+    <div class="container">
+        <p class="large big-col" href="/cities/add_to_db">Welcome, {{session['user_name']}}</p> <!-- Display name of user from session here! -->
+        <p class="col"><a href="/">Exit</a></p>
+    </div>
+    <h1>List of Landmarks</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>Mayor</th>
+                <th>Population</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for this_city in all_cities %}
+                <tr>
+                    <td>{{ this_city.id }}</td>
+                    <td>{{ this_city.name }}</td>
+                    <td>{{ this_city.mayor }}</td>
+                    <td>{{ this_city.population }}</td>
+                    <td><a href="/cities/{{this_city.id}}/show">View</a> <a href="/cities/{{this_city.id}}/edit"> Edit</a> <a href="/cities/{{this_city.id}}/delete">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="link-btn" href="/cities/new">Add city</a>
+</body>
+</html>
