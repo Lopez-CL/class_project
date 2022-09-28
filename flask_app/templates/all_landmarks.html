@@ -9,32 +9,32 @@
 </head>
 <body>
     <div class="container">
-        <p class="large big-col" href="/cities/add_to_db">Welcome, {{session['user_name']}}</p> <!-- Display name of user from session here! -->
-        <p class="col"><a href="/">Exit</a></p>
+        <p class="large big-col">Welcome, {{ session["user_name"] }}!</p> <!-- Display name of user from session here! -->
+        <p class="col"><a href="/cities">All cities</a> <a href="/logout">Exit</a></p>
     </div>
     <h1>List of Landmarks</h1>
     <table>
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Name</th>
                 <th>City</th>
-                <th>Mayor</th>
-                <th>Population</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for this_city in all_cities %}
-                <tr>
-                    <td>{{ this_city.id }}</td>
-                    <td>{{ this_city.name }}</td>
-                    <td>{{ this_city.mayor }}</td>
-                    <td>{{ this_city.population }}</td>
-                    <td><a href="/cities/{{this_city.id}}/show">View</a> <a href="/cities/{{this_city.id}}/edit"> Edit</a> <a href="/cities/{{this_city.id}}/delete">Delete</a></td>
-                </tr>
+            <!-- Show each landmark -->
+            {% for this_landmark in all_landmarks %}
+            <tr>
+                <td>{{ this_landmark.id }}</td>
+                <td>{{ this_landmark.name }}</td>
+                <td>{{ this_landmark.city.name }}</td> <!-- Notice how we're linking cities and landmarks!! -->
+                <td><a href="/landmarks/{{ this_landmark.id }}/show">View</a> <a href="/landmarks/{{ this_landmark.id }}/edit">Edit</a> <a href="/landmarks/{{ this_landmark.id }}/delete">Delete</a></td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a class="link-btn" href="/cities/new">Add city</a>
+    <a class="link-btn" href="/landmarks/new">Add landmark</a>
 </body>
 </html>
+Footer

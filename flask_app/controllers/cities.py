@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect, session
-from flask_app.models import city
+from flask_app.models import city # NEW: import the model
 
 @app.route("/cities/new")
 def new_city_form():
@@ -10,19 +10,17 @@ def new_city_form():
 def add_city_to_db():
     print("Before redirecting:")
     print(request.form) # Print the mayor of the city from the form
+    # Data dictionary that we'll use to add the city to the database
     data = {
         "name": request.form["name"],
         "mayor": request.form["mayor"],
-        "population": request.form[ "population"]
+        "population": request.form["population"]
     }
+    # Talk to model to add city to DB
     city.City.create_city(data)
-    # session["mayor"] = request.form["mayor"]
-    # session["name"] = request.form["name"]
-    # session["population"] = request.form["population"]
-    # We'll later on add the data properly to the database
-    # and not use session for this
     return redirect("/cities")
 
+# Renamed route - route to show one city
 @app.route("/cities/<int:id>/show")
 def show_city(id):
     data = {
@@ -30,17 +28,15 @@ def show_city(id):
     }
     return render_template("show_city.html", this_city = city.City.get_one_city(data))
 
-@app.route('/cities')
+# Show all cities from the database
+@app.route("/cities")
 def all_cities_page():
-    return render_template("all_cities.html", all_cities= city.City.get_all_cities())
+    # Show all cities (in a bit)
+    return render_template("all_cities.html", all_cities = city.City.get_all_cities())
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect('/')
-
+# Edit page route (NOT the same as editing in the database)
 @app.route("/cities/<int:id>/edit")
-def edit_page(id):
+def edit_city_page(id):
     data = {
         "id": id
     }
