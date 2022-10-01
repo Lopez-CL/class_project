@@ -29,7 +29,7 @@
                 <td>{{ this_landmark.id }}</td>
                 <td>{{ this_landmark.name }}</td>
                 <td>{{ this_landmark.city.name }}</td> <!-- Notice how we're linking cities and landmarks!! -->
-                <td><a href="/landmarks/{{ this_landmark.id }}/show">View</a> <a href="/landmarks/{{ this_landmark.id }}/edit">Edit</a> <a href="/landmarks/{{ this_landmark.id }}/delete">Delete</a></td>
+                <td><a href="/landmarks/{{ this_landmark.id }}/view">View</a> <a href="/landmarks/{{ this_landmark.id }}/edit">Edit</a> <a href="/landmarks/{{ this_landmark.id }}/delete">Delete</a></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -37,4 +37,3 @@
     <a class="link-btn" href="/landmarks/new">Add landmark</a>
 </body>
 </html>
-Footer

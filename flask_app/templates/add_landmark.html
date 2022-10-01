@@ -13,6 +13,13 @@
         <p class="col"><a href="/landmarks">All landmarks</a> <a href="/logout">Exit</a></p> <!-- Corrected links! -->
     </div>
     <form action="/landmarks/add_to_db" method="POST"> <!-- Don't forget action and method="POST"!-->
+        {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                {% if messages %}                            <!-- check if there are any messages -->
+                    {% for message in messages %}            <!-- loop through the messages -->
+                        <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         <div class="container">
             <label for="name" class="label-col">Name:</label>
             <input type="text" name="name" id="name"> <!-- Don't forget name="key_value" in forms!-->

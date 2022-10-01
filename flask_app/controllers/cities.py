@@ -10,6 +10,8 @@ def new_city_form():
 def add_city_to_db():
     print("Before redirecting:")
     print(request.form) # Print the mayor of the city from the form
+    if not city.City.validate_city(request.form):
+        return redirect(f"/cities/new")
     # Data dictionary that we'll use to add the city to the database
     data = {
         "name": request.form["name"],
@@ -26,7 +28,7 @@ def show_city(id):
     data = {
         "id": id
     }
-    return render_template("show_city.html", this_city = city.City.get_one_city(data))
+    return render_template("show_city.html", this_city = city.City.get_one_city_with_landmarks(data))
 
 # Show all cities from the database
 @app.route("/cities")
@@ -45,6 +47,8 @@ def edit_city_page(id):
 # Route that edits the city in the database
 @app.route("/cities/<int:id>/edit_in_db", methods=["POST"])
 def edit_city_in_db(id):
+    if not city.City.validate_city(request.form):
+        return redirect(f"/cities/{id}/edit")
     data = {
         "name": request.form["name"],
         "mayor": request.form["mayor"],
